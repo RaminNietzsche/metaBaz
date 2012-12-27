@@ -1,0 +1,445 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'GBadTag.ui'
+#
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    _fromUtf8 = lambda s: s
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        
+        #Image File Name 
+        self.ImgFile = ''
+        
+        #Set MainWindow ObjectName
+        MainWindow.setObjectName(_fromUtf8("MainWindow"))
+        
+        #Set Size of MainWindow (Con not Resize or Maximize it)
+        #you can use : MainWindow.resize(800,650) to enable resize or maximaze
+        MainWindow.setFixedSize(800, 605)
+        
+        #Make N icon ;)
+        icon = QtGui.QIcon()
+        
+        #ico.png is in RESOURCE :D
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/image/image/ico.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        
+        #Set Icon
+        MainWindow.setWindowIcon(icon)
+
+        MainWindow.setLocale(QtCore.QLocale(QtCore.QLocale.Persian, QtCore.QLocale.Iran))
+        MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonTextOnly)
+        MainWindow.setDocumentMode(True)
+        self.centralwidget = QtGui.QWidget(MainWindow)
+        self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
+        
+        #Top Frame
+        self.MainFrame = QtGui.QFrame(self.centralwidget)
+        self.MainFrame.setGeometry(QtCore.QRect(10, 10, 781, 561))
+        self.MainFrame.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.MainFrame.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.MainFrame.setFrameShadow(QtGui.QFrame.Raised)
+        self.MainFrame.setObjectName(_fromUtf8("MainFrame"))
+        
+        #Frame that show File MetaTAGs
+        self.InfoFrame = QtGui.QFrame(self.MainFrame)
+        self.InfoFrame.setGeometry(QtCore.QRect(10, 280, 761, 271))
+        self.InfoFrame.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.InfoFrame.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.InfoFrame.setFrameShadow(QtGui.QFrame.Raised)
+        self.InfoFrame.setObjectName(_fromUtf8("InfoFrame"))
+        
+        #Set Layout in InfoFrame for show METATAGS
+        #if you dont set it, you cant add new widget in other function into main frame ;)
+        self.verticalLayoutWidget = QtGui.QWidget(self.InfoFrame)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(11, 10, 741, 251))
+        self.verticalLayoutWidget.setObjectName(_fromUtf8("verticalLayoutWidget"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setMargin(0)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        
+        #Set Scrool for Layout!
+        self.scrollArea = QtGui.QScrollArea(self.verticalLayoutWidget)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName(_fromUtf8("scrollArea"))
+        self.scrollAreaWidgetContents = QtGui.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 735, 245))
+        self.scrollAreaWidgetContents.setObjectName(_fromUtf8("scrollAreaWidgetContents"))
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout.addWidget(self.scrollArea)
+        self.SetFrame = QtGui.QFrame(self.MainFrame)
+        self.SetFrame.setGeometry(QtCore.QRect(10, 40, 601, 231))
+        self.horizontalLayout_2 = QtGui.QHBoxLayout(self.scrollAreaWidgetContents)
+        self.gridLayout = QtGui.QGridLayout()
+        self.horizontalLayout_2.addLayout(self.gridLayout)
+        
+        
+        self.SetFrame.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.SetFrame.setFrameShadow(QtGui.QFrame.Raised)
+        self.SetFrame.setObjectName(_fromUtf8("SetFrame"))
+
+        #Select File
+        self.SelFile = QtGui.QPushButton(self.SetFrame)
+        self.SelFile.setShortcut('Ctrl+O')
+        self.SelFile.setGeometry(QtCore.QRect(440, 160, 141, 41))
+        self.SelFile.clicked.connect(self.LoadImg)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Nazli"))
+        self.SelFile.setFont(font)
+        self.SelFile.setObjectName(_fromUtf8("SelFile"))
+        
+        #Delete MetaTags
+        self.DelTags = QtGui.QPushButton(self.SetFrame)
+        self.DelTags.setShortcut('Delete')
+        self.DelTags.setGeometry(QtCore.QRect(440, 100, 141, 41))
+        self.DelTags.clicked.connect(self.SaveImg)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Nazli"))
+        self.DelTags.setFont(font)
+        self.DelTags.setObjectName(_fromUtf8("DelTags"))
+
+        #Preview o Selected Image
+        self.PreView = QtGui.QLabel(self.MainFrame)
+        self.PreView.setGeometry(QtCore.QRect(60, 10, 300, 300))
+        self.PreView.setObjectName(_fromUtf8("PreView"))
+
+        #Top-Right N logo (1st letter of Najjarbashi or G-Negar ;))
+        self.Logo = QtGui.QLabel(self.MainFrame)
+        self.Logo.setGeometry(QtCore.QRect(630, 67, 131, 171))
+        self.Logo.setObjectName(_fromUtf8("Logo"))
+        
+        #About ME! behind the N logo
+        self.AboutPush = QtGui.QPushButton(self.MainFrame)
+        self.AboutPush.setGeometry(QtCore.QRect(620, 40, 141, 211))
+        self.AboutPush.setText(_fromUtf8(""))
+        self.AboutPush.setObjectName(_fromUtf8("AboutPush"))
+        self.AboutPush.clicked.connect(self.AboutMe)
+        
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtGui.QStatusBar(MainWindow)
+        self.statusbar.setStatusTip(_fromUtf8(""))
+        self.statusbar.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.statusbar.setSizeGripEnabled(False)
+        self.statusbar.setObjectName(_fromUtf8("statusbar"))
+        MainWindow.setStatusBar(self.statusbar)
+
+        #Applay Css
+        self.SetCss()
+        
+        #Move MainWindow To Center Of Screen
+        self.center()
+        
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+    def SetCss(self):
+        #CSS?
+        #Style Sheet?
+        #WTF? can we used css in Qt? 
+        #HA HA HA :D Yes! :D
+        self.AboutPush.setStyleSheet(_fromUtf8("QPushButton {\n"
+            "padding: 50px 50 50 0;\n"
+            "background-image: url(:/image/image/ok.png);\n"
+            "background-repeat:no-repeat;\n"
+            "background-attachment:fixed;\n"
+            "background-position:center; \n"
+            "     border-style: outset;\n"
+            "     border-width: 0px;\n"
+            "     border-radius: 10px;\n"
+            "}"
+            "\n"
+            "QToolTip {\n"
+            "     border: 2px solid darkkhaki;\n"
+            "     padding: 5px;\n"
+            "     border-radius: 10px;\n"
+            "     opacity: 200; \n"
+            "}"))        
+        self.PreView.setStyleSheet(_fromUtf8("#PreView {\n"
+            "padding: 50px 50 50 0;\n"
+            "background-repeat:no-repeat;\n"
+            "background-attachment:fixed;\n"
+            "background-position:center; \n"
+            "     border-style: outset;\n"
+            "     border-width: 0px;\n"
+            "     border-radius: 10px;\n"
+            "}"
+            "\n"
+            "QToolTip {\n"
+            "     border: 2px solid darkkhaki;\n"
+            "     padding: 5px;\n"
+            "     border-radius: 10px;\n"
+            "     opacity: 200; \n"
+            "}"))
+
+        self.DelTags.setStyleSheet(_fromUtf8("QPushButton:disabled{ background-color: yellow; }\n"
+            "QPushButton:pressed{ background-color: orange; }\n"
+            "QPushButton:focus:pressed{ background-color: rgb(255, 255, 255); }\n"
+            "QPushButton:focus{ background-color: rgb(164, 255, 44); }\n"
+            "QPushButton:hover{ background-color: rgb(255, 255, 127); }\n"
+            "QPushButton:checked{ background-color: pink; }\n"
+            "QPushButton {\n"
+            "padding: 50px 50 50 0;\n"
+            "background-image: url(:/image/image/ok.png);\n"
+            "background-repeat:no-repeat;\n"
+            "background-attachment:fixed;\n"
+            "background-position:center; \n"
+            "     background-color:  rgb(184, 225, 255);\n"
+            "     border-style: outset;\n"
+            "     border-width: 2px;\n"
+            "     border-radius: 10px;\n"
+            "}\n"
+            ""))
+            
+        self.SelFile.setStyleSheet(_fromUtf8("QPushButton:disabled{ background-color: yellow; }\n"
+            "QPushButton:pressed{ background-color: orange; }\n"
+            "QPushButton:focus:pressed{ background-color: rgb(255, 255, 255); }\n"
+            "QPushButton:focus{ background-color: rgb(164, 255, 44); }\n"
+            "QPushButton:hover{ background-color: rgb(255, 255, 127); }\n"
+            "QPushButton:checked{ background-color: pink; }\n"
+            "QPushButton {\n"
+            "padding: 50px 50 50 0;\n"
+            "background-image: url(:/image/image/ok.png);\n"
+            "background-repeat:no-repeat;\n"
+            "background-attachment:fixed;\n"
+            "background-position:center; \n"
+            "     background-color:  rgb(184, 225, 255);\n"
+            "     border-style: outset;\n"
+            "     border-width: 2px;\n"
+            "     border-radius: 10px;\n"
+            "}\n"
+            ""))
+        self.SetFrame.setStyleSheet(_fromUtf8("#SetFrame {\n"
+            "     background-color: rgb(232, 232, 232);\n"
+            "     border-style: outset;\n"
+            "     border-width: 2px;\n"
+            "     border-radius: 10px;\n"
+            "     border-color: beige;\n"
+            "     font: bold 14px;\n"
+            "     margin-left:0;\n"
+            "     margin-right:0;\n"
+            "     position:absolute;\n"
+            "}\n"
+            "\n"
+            "QToolTip {\n"
+            "     border: 2px solid darkkhaki;\n"
+            "     padding: 5px;\n"
+            "     border-radius: 10px;\n"
+            "     opacity: 200; \n"
+            "     width: 2000px;\n"
+            "}"))
+        self.scrollArea.setStyleSheet(_fromUtf8("#scrollArea{\n"
+            "     border-style: outset;\n"
+            "     border-width: 2px;\n"
+            "     border-radius: 10px;\n"
+            "     border-color: beige;\n"
+            "     font: bold 14px;\n"
+            "     margin-left:0;\n"
+            "     margin-right:0;\n"
+            "     position:absolute;\n"
+            "}\n"
+            "\n"
+            "QToolTip {\n"
+            "     border: 2px solid darkkhaki;\n"
+            "     padding: 5px;\n"
+            "     border-radius: 10px;\n"
+            "     opacity: 200; \n"
+            "}"))
+        MainWindow.setStyleSheet(_fromUtf8(" text-shadow: 2px 2px #ff0000;\n"
+            "\n"
+            "QToolTip {\n"
+            "     border: 2px solid darkkhaki;\n"
+            "     padding: 5px;\n"
+            "     border-radius: 10px;\n"
+            "     opacity: 200; \n"
+            "}"))
+        self.InfoFrame.setStyleSheet(_fromUtf8("#InfoFrame {\n"
+            "     background-color: rgb(232, 232, 232);\n"
+            "     border-style: outset;\n"
+            "     border-width: 2px;\n"
+            "     border-radius: 10px;\n"
+            "     border-color: beige;\n"
+            "     font: bold 14px;\n"
+            "     margin-left:0;\n"
+            "     margin-right:0;\n"
+            "     position:absolute;\n"
+            "}"))
+        self.MainFrame.setStyleSheet(_fromUtf8(" #MainFrame {\n"
+            "     background-color: white;\n"
+            "     border-style: outset;\n"
+            "     border-width: 2px;\n"
+            "     border-radius: 10px;\n"
+            "     border-color: beige;\n"
+            "     font: bold 14px;\n"
+            "     margin-left:0;\n"
+            "     margin-right:0;\n"
+            "     position:absolute;\n"
+            " }"))
+
+    def retranslateUi(self, MainWindow):
+        #MY STRINGS or some thing like that ;)
+        MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "متا-تگ باز", None, QtGui.QApplication.UnicodeUTF8))
+        MainWindow.setStatusTip(QtGui.QApplication.translate("MainWindow", "برنامه‌ای برای نمایش و حذف متاتگ ها. ", None, QtGui.QApplication.UnicodeUTF8))
+        self.SelFile.setToolTip(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p>یک فایل را انتخاب کنید</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.DelTags.setToolTip(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p>حذف متا- تگ ها از فایل انتخابی</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.SelFile.setText(QtGui.QApplication.translate("MainWindow", "انتخاب فایل", None, QtGui.QApplication.UnicodeUTF8))
+        self.DelTags.setText(QtGui.QApplication.translate("MainWindow", "حذف متاتگ", None, QtGui.QApplication.UnicodeUTF8))
+        self.PreView.setToolTip(QtGui.QApplication.translate("MainWindow", "پیش نمایش عکس", None, QtGui.QApplication.UnicodeUTF8))
+        self.PreView.setStatusTip(QtGui.QApplication.translate("MainWindow", "شما می‌خواهید متاتگ های مربوط به این فایل را حذف کنید!", None, QtGui.QApplication.UnicodeUTF8))
+        self.Logo.setText(QtGui.QApplication.translate("MainWindow", "<html><head/><body><p><img src=\":/image/image/10649.png\"/></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+        self.AboutPush.setToolTip(QtGui.QApplication.translate("MainWindow", "درباره‌ی متا-تگ باز!", None, QtGui.QApplication.UnicodeUTF8))
+        self.AboutPush.setStatusTip(QtGui.QApplication.translate("MainWindow", "داستانی بی‌ربط به نگار!", None, QtGui.QApplication.UnicodeUTF8))
+        self.SelFile.setStatusTip(QtGui.QApplication.translate("MainWindow", "بازکردن یک فایل", None, QtGui.QApplication.UnicodeUTF8))
+        self.DelTags.setStatusTip(QtGui.QApplication.translate("MainWindow", "حذف متا-تگ‌ها", None, QtGui.QApplication.UnicodeUTF8))
+
+    def LoadImg(self):
+        
+        #Delet All widget from layout
+        #if you select a picture, you can see that tags
+        #if you select othre pic, you can see both tags!!!
+        #if you select bad file, still you can see last tags!
+        #this line help you to clean layout from last executed :D
+        for i in range(self.gridLayout.count()): self.gridLayout.itemAt(i).widget().close()
+        
+        #Var For tags
+        info = ''
+        self.ImgFile =''
+        
+        #Show DialogBox to select file
+        #just image :(
+        #fname = file name (full Address)
+        #'Open file' Title of DialogBox
+        #'/home' start file Browsing from here
+        #'JPEG (*.jpg *.jpeg)' Define file browsing type, you can select multitype be code like this:
+        #    'JPEG (*.jpg *.jpeg);; GIF (*.gif);; ... '
+        fname = QtGui.QFileDialog.getOpenFileName(MainWindow, _fromUtf8('انتخاب فایل'), '/home', _fromUtf8('عکس دیجیتال (*.jpg *.jpeg)'))
+        
+        #include image and metaTAG lib
+        from PIL import Image
+        from PIL.ExifTags import TAGS
+        
+        #try to load image file...
+        try:
+            
+            #Open file as image!!!
+            TagReader = Image.open(str(fname))
+            
+            #Get AllData of file
+            info = TagReader._getexif()
+            
+            #Scall Image (Full Object Size)for Show Proview of selected Image
+            self.PreView.setScaledContents(True)
+
+            #Show Image in QLable :D you can use HTML tag too (by setText)
+            self.PreView.setPixmap(QtGui.QPixmap(str(fname)))
+
+            #Make list of Lable and TextBox for Display MetaTags
+            self.fieldList = {}
+            
+            #Creat Empty List to store 
+            #unused NOW!
+            ##ret = {}
+            
+            #Get MetaTags From File (JUST PICTURE!!!)
+            for tag, value in info.items():
+                
+                #make a QLineEdit for each TAG
+                self.fieldList["Field" + str(tag)] = QtGui.QLineEdit(self.MainFrame)
+                self.fieldList["Field" + str(tag)].setObjectName(_fromUtf8("Field" + str(tag)))
+                
+                #Show Tag's Value in QLineEdit
+                self.fieldList["Field" + str(tag)].setText(str(value))
+                
+                #Make ReadOnly (Disable to Edit!) QLineEdits
+                self.fieldList["Field" + str(tag)].setEnabled(False)
+
+                #Set CSS for QLineEdits
+                self.fieldList["Field" + str(tag)].setStyleSheet(_fromUtf8("#"+ str("Field" + str(tag)) +" {\n"
+                    "     background-color: rgb(232, 232, 232);\n"
+                    "     border-style: outset;\n"
+                    "     border-width: 2px;\n"
+                    "     border-radius: 10px;\n"
+                    "     border-color: beige;\n"
+                    "     font: bold 14px;\n"
+                    "     margin-left:0;\n"
+                    "     margin-right:0;\n"
+                    "     position:absolute;\n"
+                    "}\n"))
+                
+                #Get Tags Name from Codes like (1 = some thing or other thing or etc)
+                decoded = TAGS.get(tag, tag)
+                
+                #Find Unknow tag and Change Title to 'Unknow Tag ...'
+                try :
+                    int(decoded)
+                    decoded = "Unknow Tag ..."
+                except:
+                    pass
+                
+                #show Tags as lable in Layout
+                self.lbl = QtGui.QLabel(str(decoded), self.MainFrame)
+                
+                #Agg Tag's Labals to Layout (QLable)
+                self.gridLayout.addWidget(self.lbl)
+                
+                #Add Tag's Value to Layout (QLineEdit)
+                self.gridLayout.addWidget(self.fieldList["Field" + str(tag)])
+                
+                #Make List of Tags (Used for change Tags Value)
+                #unused NOW!
+                ##sret[decoded] = value
+                
+            self.ImgFile = fname
+
+        except:
+            #Show Error when select Bad File or image have not any tag!
+            QtGui.QMessageBox.warning(self.MainFrame, _fromUtf8('خطا در نمایش متا-تگ'), QtCore.QString(_fromUtf8('فایل انتخابی نا معتبر است و یا متا-تگی برای نمایش ندارد :\n %1')).arg(str(fname)))
+
+    def SaveImg(self):
+        if self.ImgFile == '':
+            QtGui.QMessageBox.warning(self.MainFrame, _fromUtf8('خطا در نمایش متا-تگ'), QtCore.QString(_fromUtf8('ابتدا فایلی را انتخاب کنید')))
+        else:
+            from PIL import Image
+            from PIL.ExifTags import TAGS
+            try:
+                tmp = Image.open(str(self.ImgFile))
+                fname = QtGui.QFileDialog.getSaveFileName(MainWindow, _fromUtf8('ذخیره فایل'), '/home', _fromUtf8('عکس دیجیتال (*.jpg *.jpeg)'))
+                tmp.info.clear()
+                tmp.save(str(fname)+".jpg")
+            except:
+                QtGui.QMessageBox.warning(self.MainFrame, _fromUtf8('خطا در ذخیره فایل'), QtCore.QString(_fromUtf8('حوصله ندارم علت خطا را پیدا کنم! اشتباه کردین خودتون یک جایی حتما! به من چه اصلا؟ :)')))
+        
+        
+    def AboutMe(self):
+                
+        import AboutMe
+        Dialog2 = QtGui.QDialog()
+        ui2 = AboutMe.Ui_Dialog()
+        ui2.setupUi(Dialog2)
+        Dialog2.exec_()()
+
+    def center(self):
+        qr =  MainWindow.frameGeometry()
+        cp = QtGui.QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        MainWindow.move(qr.topLeft())
+     
+
+#import Resources :D
+import GNrc
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    MainWindow = QtGui.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+
