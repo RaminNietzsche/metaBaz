@@ -1,0 +1,20 @@
+Metadata-Version: 1.1
+Name: metaBaz
+Version: 0.0
+Summary: metaBaz is a script to remove images metatags ;)
+Home-page: http://RaminNietzsche.github.com/metaBaz
+Author: Ramin Najjarbashi
+Author-email: Ramin.Najarbashi@gmail.com
+License: GPL
+Description: UNKNOWN
+Keywords: metatag,Persian,editor,python
+Platform: UNKNOWN
+Classifier: Development Status :: 0 - Beta
+Classifier: Intended Audience :: Persian Users
+Classifier: Intended Audience :: Persian Programmers
+Classifier: License :: OSI Approved :: GNU General Public License v3
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Topic :: Editor
+Classifier: Topic :: Persian
+Classifier: Topic :: Meta Tags

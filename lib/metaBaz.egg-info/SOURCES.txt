@@ -1,0 +1,9 @@
+README
+setup.py
+bin/badtag
+lib/AboutMe.py
+lib/GNrc.py
+lib/metaBaz.egg-info/PKG-INFO
+lib/metaBaz.egg-info/SOURCES.txt
+lib/metaBaz.egg-info/dependency_links.txt
+lib/metaBaz.egg-info/top_level.txt
